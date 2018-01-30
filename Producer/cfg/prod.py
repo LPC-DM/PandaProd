@@ -295,7 +295,7 @@ if options.isData:
 if not options.useTrigger:
     process.panda.fillers.hlt.enabled = False
 
-process.panda.outputFile = options.outputFile
+#process.panda.outputFile = options.outputFile
 process.panda.printLevel = options.printLevel
 
 process.ntuples = cms.EndPath(process.panda)

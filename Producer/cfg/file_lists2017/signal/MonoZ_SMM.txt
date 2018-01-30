@@ -1,0 +1,1 @@
+/SMM_MonoZ_Mphi-750_Mchi-1_gSM-1p0_gDM-1p0_13TeV-madgraph/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM
