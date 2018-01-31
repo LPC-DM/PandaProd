@@ -105,31 +105,35 @@ if __name__ == '__main__':
 				config.JobType.pyCfgParams[idx] = "isSignal=" + value
 				return 
 
-						
-	def submitList(l):
-		for ll in l:
-			split = ll.split('/')
+
+        def submitList(l):
+                for ll in l:
+                        split = ll.split('/')
                         if split[1] == "uscms_data":
-                                config.Data.inputDataset = open(ll).readlines()
+                                with open(ll) as f:
+                                 for line in f:
+                                   #print(line)
+                                   config.Data.inputDataset = line
                                # config.Data.inputDataset = ''.join(DatainputDataset) 
-                                print config.Data.inputDataset
-                                #config.Data.outputPrimaryDataset = split[-1].split('.')[0]
+                                   print config.Data.inputDataset
+                                   #config.Data.outputPrimaryDataset = split[-1].split('.')[0]
                         else:
                                 config.Data.inputDataset = ll
-			if split[-1]=='MINIAOD':
-				config.General.requestName = split[1]+'_'+split[2]
-			elif 'ext' in split[-2]:
-				ext = findall('ext[0-9]+',split[-2])
-				if len(ext)>0:
-					config.General.requestName = split[1] + '_' + ext[0]
-				else:
-					config.General.requestName = split[1]
-			else:
+                        if split[-1]=='MINIAOD':
+                                config.General.requestName = split[1]+'_'+split[2]
+                        elif 'ext' in split[-2]:
+                                ext = findall('ext[0-9]+',split[-2])
+                                if len(ext)>0:
+                                        config.General.requestName = split[1] + '_' + ext[0]
+                                else:
+                                        config.General.requestName = split[1]
+                        else:
                                 #private file
-				#config.General.requestName = split[1]
+                                #config.General.requestName = split[1]
                                 config.General.requestName = split[-1].split('.')[0]
-			submit(config)
+                        submit(config)
 
+        '''                 
 	#############################################################################################
 	## From now on that's what users should modify: this is the a-la-CRAB2 configuration part. ##
 	#############################################################################################
@@ -145,6 +149,7 @@ if __name__ == '__main__':
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/mc/DYJetsToLL_HT.txt',
         ])
 
+        '''                 
         '''                 
        ###################################################
         setdata("False")
@@ -167,31 +172,38 @@ if __name__ == '__main__':
         ])
 
         '''                 
-        '''                 
         ###################################################
         setdata("True")
         ###################################################
-        config.Data.unitsPerJob = 5000
+        config.Data.unitsPerJob = 20000
 
         submitList([
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/MET.txt',
+                        #'/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/MET.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/SingleElectron.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/SingleMuon.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/SinglePhoton.txt',
+                        #'/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/SingleMuon.txt',
+                        #'/uscms_data/d3/naina25/Panda_2018/Panda_Prod/CMSSW_9_2_6/src/PandaProd/Producer/cfg/file_lists2017/data/SinglePhoton.txt',
                         ])
             
         ''' 	
-        '''                 
 	###################################################
 	setdata("True")
 	###################################################
-	config.Data.unitsPerJob = 20000
+	config.Data.unitsPerJob = 22000
 
 	submitList([
-                      '/MET/Run2017E-PromptReco-v1/MINIAOD'
+                      '/MET/Run2017B-PromptReco-v2/MINIAOD',
+		      '/MET/Run2017B-PromptReco-v1/MINIAOD',
+		      '/MET/Run2017C-PromptReco-v3/MINIAOD',
+		      '/MET/Run2017C-PromptReco-v2/MINIAOD',
+		      '/MET/Run2017C-PromptReco-v1/MINIAOD',
+		      '/MET/Run2017D-PromptReco-v1/MINIAOD',
+		      '/MET/Run2017F-PromptReco-v1/MINIAOD',
+		      '/MET/Run2017A-PromptReco-v3/MINIAOD',
+		      '/MET/Run2017A-PromptReco-v2/MINIAOD',
+		      '/MET/Run2017A-PromptReco-v1/MINIAOD',
 			])
 	
-        '''	
+        ''' 	
         ''' 	
 	###################################################
 	setdata("True")
