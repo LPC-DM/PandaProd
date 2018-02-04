@@ -3,20 +3,21 @@ Package for production of PandA from CMSSW
 
 ## Installation
 ```
-    export CMSSW_RELEASE=CMSSW_8_0_29
+    export CMSSW_RELEASE=CMSSW_9_3_0
     export TREE_BRANCH=master
-    export PROD_BRANCH=branch-80X
+    export PROD_BRANCH=master
 
     source /cvmfs/cms.cern.ch/cmsset_default.sh
     scram p CMSSW $CMSSW_RELEASE
     cd $CMSSW_RELEASE/src
     eval `scram runtime -sh`
     
-    git clone https://github.com/PandaPhysics/PandaTree
-    git clone https://github.com/PandaPhysics/PandaProd
+    git clone -b $TREE_BRANCH https://github.com/LPCPandaPhysics/PandaTree.git
+    git clone -b $PROD_BRANCH https://github.com/LPCPandaPhysics/PandaProd.git
 
-    # Don't do the following if you want to use 92x, but it is necessary for 80x:
-    ./PandaProd/Producer/cfg/setuprel.sh
+    # populate POG's and physics's packages
+    # Don't do the following if you want to use 93x, but it is necessary for 80x:
+    #./PandaProd/Producer/cfg/setuprel.sh
 
     scram b -j12
 ```
