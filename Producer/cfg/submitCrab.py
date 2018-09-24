@@ -36,13 +36,17 @@ config.JobType.outputFiles = ['panda.root']
 
 ### DATA configuration
 #config.Data.inputDataset = '/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM'
+config.Data.inputDataset = '/ZprimeToA0hToA0chichihbb_2HDM_MZp-2500_MA0-400_13TeV-madgraph/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM'
 config.Data.inputDBS = 'global'
 #config.Data.ignoreLocality = True
 config.Data.ignoreLocality = False
 
-config.Data.splitting = 'FileBased'
-config.Data.unitsPerJob = 10
-config.Data.totalUnits = -1
+#config.Data.splitting = 'FileBased'
+#config.Data.unitsPerJob = 10
+#config.Data.totalUnits = -1
+config.Data.unitsPerJob = 8476
+config.Data.splitting = 'EventAwareLumiBased'
+config.Data.totalUnits = 100000
 
 config.Site.storageSite = 'T3_US_FNALLPC' 
 config.Data.outLFNDirBase = '/store/group/lpcmetx/pandaprod/80X-v1' #Please change USER to yours
@@ -63,7 +67,7 @@ if __name__ == '__main__':
 
 	# We want to put all the CRAB project directories from the tasks we submit here into one common directory.
 	# That's why we need to set this parameter (here or above in the configuration file, it does not matter, we will not overwrite it).
-	config.General.workArea = 'Submission_Signals_Sep21'
+	config.General.workArea = 'Submission_Signals_23Sep_v4'
 
 	def submit(config):
 		### for some reason only the first dataset is submitted correctly, work around
@@ -160,34 +164,13 @@ if __name__ == '__main__':
        ###################################################
         setdata("False")
         ###################################################
-        config.Data.splitting = 'FileBased'
-        config.Data.unitsPerJob = 50
+        #config.Data.splitting = 'FileBased'
+        config.Data.splitting = 'EventAwareLumiBased'
+        config.Data.unitsPerJob = 9000
+
         setsignal("True")        
         submitList([
-# for Sonaina to run
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DM_ScalarWH.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DM_ScalarZH.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/GluGlu_HToInvisible.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoH.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoJ_NLO_axial.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoJ_NLO_pseudoscalar.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoJ_NLO_scalar.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoJ_NLO_vector.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoW_NLO_axial.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoW_NLO_vector.txt',
-# For Allie to run
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoW_axial.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoW_vector.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_NLO_axial.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_NLO_pseudoscalar.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_NLO_scalar.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_NLO_vector.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_SMM.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_axial.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/MonoZ_vector.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/VBF_HToInvisible.txt',
-# for Matteo to run
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/WpmH_HToInvisible.txt',
+			'/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/WpmH_HToInvisible.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/ZH_HToInvisible.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/ADDMonoJet.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMSimp_NLO_bbDM_pseudoscalar.txt',
@@ -197,7 +180,7 @@ if __name__ == '__main__':
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMV_NNPDF30_axial.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMV_NNPDF30_pseudoscalar.txt',
                         '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMV_NNPDF30_scalar.txt',
-                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMV_NNPDF30_vector.txt',
+                        '/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/signal/80X/DMV_NNPDF30_vector.txt'
         ])
 
         '''                 
@@ -216,4 +199,4 @@ if __name__ == '__main__':
                        #'/uscms_data/d3/naina25/Panda_2018/Panda_Prod_2016/CMSSW_8_0_29/src/PandaProd/Producer/cfg/file_lists2016/data/80X/SinglePhoton_test.txt',
                         ])
             
-        '''
+        '''                 
