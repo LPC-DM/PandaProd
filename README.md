@@ -34,6 +34,14 @@ please change the [line](https://github.com/LPCPandaPhysics/PandaProd/blob/branc
      source setupCrab.sh
      python submitCrab.py
 ```
+
+In the Producer/cfg directory, there is a script to check the status of all crab jobs submitted at once:
+```
+     cd PandaProd/Producer/cfg/
+     source setupCrab.sh
+     source checkCrabStatus.sh {Crab working directory, normally Submission_Signals_DATE}
+```
+
 ## Hints: User experience column
 1. For running on privately produced files in eos space (cmslpc), ensure the directory structure strictly adhere to the follow:
    ```  
